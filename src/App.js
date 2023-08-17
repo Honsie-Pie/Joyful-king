@@ -2,6 +2,7 @@ import  React, { useState, useEffect } from 'react';
 import MainMenu from './mainemenu';
 import PlayerDash from './playerdash';
 import Results from './results';
+import Finale from './finale';
 import './App.css';
 
 function App() {
@@ -424,7 +425,7 @@ function App() {
       ? <PlayerDash activePlayers={activePlayers} handleDraw={handleDraw} handleResults={handleResults}/>
       : phase === "results"
       ? <Results handleNewRound={handleNewRound}/>
-      : <h1>The End</h1>
+      : <Finale />
       }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
     </div>
