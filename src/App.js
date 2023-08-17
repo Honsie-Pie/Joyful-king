@@ -1,6 +1,7 @@
 import  React, { useState, useEffect } from 'react';
 import MainMenu from './mainemenu';
 import PlayerDash from './playerdash';
+import Results from './results';
 import './App.css';
 
 function App() {
@@ -338,6 +339,52 @@ function App() {
     setNumPlayers(event.target.value);
   }
 
+  function handleNewRound(){
+    const playersArr= [...activePlayers];
+    
+    if (deck.length >= numPlayers) {
+      for (let i = 0; i < numPlayers; i++){
+        playersArr[i].switch = false;
+        playersArr[i].card = deck[i];
+  
+        const newDeck = deck.slice(numPlayers);
+  
+        setActivePlayers(playersArr);
+        setPhase("drawing");
+        setDeck(newDeck);
+      }
+    } else {
+      setPhase("finale");
+      setDeck(randomize(fullDeck));
+    }
+    
+  }
+
+  function handleDraw(index){
+    console.log(`player ${index} wants to draw another card`);
+    if (deck.length && activePlayers[index - 1].switch === false){
+      console.log("this player hasn't switched");
+      const replacementCard = deck[0];
+      const replacementDeck = deck.slice(1);
+      const replacementPlayers = [...activePlayers];
+
+      replacementPlayers[index - 1].switch = true;
+      replacementPlayers[index - 1].card = replacementCard;
+      
+      setActivePlayers(replacementPlayers);
+      setDeck(replacementDeck);
+      console.log(replacementPlayers);
+    }
+  }
+
+  function handleResults(){
+    if(phase === "drawing"){
+      console.log("Let's find out who the winner fraking is");
+      setPhase("results");
+    }
+    
+  }
+
   function handleStart(){
     const playersArr= [];
 
@@ -355,9 +402,6 @@ function App() {
     setActivePlayers(playersArr);
     setPhase("drawing");
     setDeck(newDeck);
-    console.log(numPlayers);
-    console.log(playersArr);
-    console.log(activePlayers);
   }
 
   function randomize(arr){
@@ -375,8 +419,12 @@ function App() {
     <div className="App">
       <h1>Sad King</h1>
       {phase === "main-menu"
-      ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart}/>
-      : <PlayerDash activePlayers={activePlayers} />
+      ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart} />
+      : phase === "drawing" 
+      ? <PlayerDash activePlayers={activePlayers} handleDraw={handleDraw} handleResults={handleResults}/>
+      : phase === "results"
+      ? <Results handleNewRound={handleNewRound}/>
+      : <h1>The End</h1>
       }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
     </div>

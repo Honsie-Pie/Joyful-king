@@ -28,3 +28,15 @@ input{
   padding: 1em;
   background-color: var(--menu-bg);
 }
+
+.player-card{
+  border: 2px solid black;
+  height: 120px;
+  width: 20%;
+}
+
+#player-dash{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
