@@ -318,14 +318,46 @@ function App() {
     }
   ];
 
+  const possiblePhases = [
+    "main-menu", "drawing", "results", "final-results"
+  ];
+
   const [deck, setDeck] = useState(fullDeck);
+  const [numPlayers, setNumPlayers] = useState(2);
+  const [activePlayers, setActivePlayers] = useState([]);
+  const [phase, setPhase] = useState("main-menu");
 
   
-
   useEffect(()=>{
     const randomizedDeck = randomize(deck);
     setDeck(randomizedDeck);
   }, []);
+
+  function handleNumPlayersChange(event){
+    setNumPlayers(event.target.value);
+  }
+
+  function handleStart(){
+    const playersArr= [];
+
+    for (let i = 0; i < numPlayers; i++){
+      playersArr.push({
+        index: i,
+        card: deck[i],
+        switch: false,
+        timesDrank: 0
+      });
+    }
+
+    const newDeck = deck.slice(numPlayers);
+
+    setActivePlayers(playersArr);
+    setPhase("drawing");
+    setDeck(newDeck);
+    console.log(numPlayers);
+    console.log(playersArr);
+    console.log(activePlayers);
+  }
 
   function randomize(arr){
     const arr2 = [...arr];
@@ -341,7 +373,10 @@ function App() {
   return (
     <div className="App">
       <h1>Sad King</h1>
-      <MainMenu />
+      {phase === "main-menu"
+      ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart}/>
+      : <h2>This is a work in progress</h2>
+      }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
     </div>
   );
