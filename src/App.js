@@ -1,5 +1,6 @@
 import  React, { useState, useEffect } from 'react';
 import MainMenu from './mainemenu';
+import PlayerDash from './playerdash';
 import './App.css';
 
 function App() {
@@ -375,7 +376,7 @@ function App() {
       <h1>Sad King</h1>
       {phase === "main-menu"
       ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart}/>
-      : <h2>This is a work in progress</h2>
+      : <PlayerDash activePlayers={activePlayers} />
       }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
     </div>
