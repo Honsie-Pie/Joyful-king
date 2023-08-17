@@ -1,4 +1,5 @@
 import  React, { useState, useEffect } from 'react';
+import MainMenu from './mainemenu';
 import './App.css';
 
 function App() {
@@ -340,6 +341,7 @@ function App() {
   return (
     <div className="App">
       <h1>Sad King</h1>
+      <MainMenu />
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
     </div>
   );

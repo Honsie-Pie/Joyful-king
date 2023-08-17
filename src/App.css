@@ -1,3 +1,7 @@
+:root{
+  --menu-bg: #F0877F;
+}
+
 *, *::before, *::after{
   margin: 0;
   padding: 0;
@@ -7,4 +11,20 @@
 h1{
   text-align: center;
   margin: 1em auto 2em;
+}
+
+button{
+  padding: 0.5em 1em;
+}
+
+input{
+  padding: 0.25em;
+  font-size: 1.25rem;
+}
+
+.menu{
+  border: 2px solid black;
+  margin: 0 auto;
+  padding: 1em;
+  background-color: var(--menu-bg);
 }
