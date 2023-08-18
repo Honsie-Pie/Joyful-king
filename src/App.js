@@ -328,6 +328,7 @@ function App() {
   const [deck, setDeck] = useState(fullDeck);
   const [numPlayers, setNumPlayers] = useState(2);
   const [activePlayers, setActivePlayers] = useState([]);
+  const [losingPlayers, setLosingPlayers] = useState([]);
   const [phase, setPhase] = useState("main-menu");
 
   
@@ -372,16 +373,38 @@ function App() {
       replacementPlayers[index - 1].switch = true;
       replacementPlayers[index - 1].card = replacementCard;
       
-      setActivePlayers(replacementPlayers);
-      setDeck(replacementDeck);
       console.log(replacementPlayers);
+      setDeck(replacementDeck);
+      setActivePlayers(replacementPlayers);
     }
   }
 
   function handleResults(){
     if(phase === "drawing"){
-      console.log("Let's find out who the winner fraking is");
+      console.log("Let's find out who the winner freaking is");
       setPhase("results");
+
+      const ranx = [];
+      activePlayers.forEach((player) => ranx.push(player.card.no));
+      console.log(ranx);
+      let loserRank = 0;
+
+      if (ranx.includes(13)){
+        console.log("happy king!");
+        loserRank = 14;
+        setLosingPlayers([...activePlayers]);
+      } else{
+        loserRank = Math.min(...ranx);
+        setLosingPlayers(activePlayers.filter(player => player.card.no === loserRank));
+      }
+
+      const replacementPlayers = [...activePlayers];
+      replacementPlayers.forEach((player) => {
+        if (player.card.no <= loserRank){
+          player.timesDrank += 1;
+        }
+      });
+      setActivePlayers([...replacementPlayers]);
     }
     
   }
@@ -405,6 +428,10 @@ function App() {
     setDeck(newDeck);
   }
 
+  function handleEnd(){
+    setPhase("main-menu");
+  }
+
   function randomize(arr){
     const arr2 = [...arr];
     for (let i = arr2.length - 1; i > 0; i--){
@@ -424,10 +451,11 @@ function App() {
       : phase === "drawing" 
       ? <PlayerDash activePlayers={activePlayers} handleDraw={handleDraw} handleResults={handleResults}/>
       : phase === "results"
-      ? <Results handleNewRound={handleNewRound}/>
-      : <Finale />
+      ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers}/>
+      : <Finale handleEnd={handleEnd} activePlayers={activePlayers}/>
       }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
+      <p>total: {deck.length}</p>
     </div>
   );
 }
