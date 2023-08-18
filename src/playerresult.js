@@ -1,9 +1,14 @@
+import AnimatedMug from "./animatedmug";
+
 export default function PlayerResult(props){
     return(
         <div className="player-card">
+            <p>Player {props.player.index  + 1} {props.losingPlayers.includes(props.player)
+            ? " grabs a drink!"
+            : "is safe"}</p>
             {props.losingPlayers.includes(props.player)
-            ? <p>Player {props.player.index + 1} grabs a drink!</p>
-            : <p>Player {props.player.index  + 1} is safe</p>
+            ? <AnimatedMug />
+            : <p>Phew!</p>
             }
         </div>
     );
