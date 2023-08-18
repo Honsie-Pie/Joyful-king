@@ -35,7 +35,7 @@ input{
   width: 20%;
 }
 
-#player-dash{
+.player-dash{
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;

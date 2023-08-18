@@ -1,8 +1,12 @@
-export default function Results({ handleNewRound, losingPlayers }){
+import PlayerResult from "./playerresult";
+
+export default function Results({ handleNewRound, losingPlayers, activePlayers }){
     return (
         <div className="menu">
             <h2>Results:</h2>
-            {losingPlayers.map(loser => <p key={loser.index + 1} >Player {loser.index + 1} grabs a drink!</p>)}
+            <div className="player-dash">
+                {activePlayers.map((player) => <PlayerResult key={player.index + 1} player={player} losingPlayers={losingPlayers}/>)}
+            </div>
             <button onClick={handleNewRound}>Next Round</button>
         </div>
     );

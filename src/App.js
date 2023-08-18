@@ -451,7 +451,7 @@ function App() {
       : phase === "drawing" 
       ? <PlayerDash activePlayers={activePlayers} handleDraw={handleDraw} handleResults={handleResults}/>
       : phase === "results"
-      ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers}/>
+      ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers} activePlayers={activePlayers}/>
       : <Finale handleEnd={handleEnd} activePlayers={activePlayers}/>
       }
       <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
