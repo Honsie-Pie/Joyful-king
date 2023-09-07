@@ -6,6 +6,7 @@ export default function ComputerPlayer(props){
         if (props.card.no < 8){
             props.handleDraw(props.index)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return(
