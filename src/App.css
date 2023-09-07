@@ -2,7 +2,7 @@
 :root{
   --menu-bg: #8d3ecd;
   --card-bg: #5a189a;
-  --app-bg: #f7f4af;
+  --app-bg: #ffd500;
   --btn-color: #EFD2FF;
 
   /*Fonts*/
@@ -52,17 +52,17 @@ input{
 }
 
 .menu{
-  border: 10px solid black;
-  border-radius: 15px;
+  border: none;
   margin: 0 auto;
   padding: 1em;
   background-color: var(--menu-bg);
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content: space-around;
   gap: 1em;
-  width: 90%;
-  height: 75%;
+  width: 100%;
+  height: 79%;
   color: white;
   font-family: var(--sec-font);
   font-size: 1.5rem;
@@ -70,6 +70,11 @@ input{
 
 .menu h2{
   text-align: center;
+}
+
+.main-controls{
+  display:flex;
+  gap: 2em;
 }
 
 .menu button{
@@ -118,6 +123,12 @@ input{
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.final-tally{
+  display:flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 /*Mug section*/
