@@ -321,10 +321,6 @@ function App() {
     }
   ];
 
-  const possiblePhases = [
-    "main-menu", "drawing", "results", "final-results"
-  ];
-
   const [deck, setDeck] = useState(fullDeck);
   const [numPlayers, setNumPlayers] = useState(2);
   const [activePlayers, setActivePlayers] = useState([]);
@@ -335,6 +331,7 @@ function App() {
   useEffect(()=>{
     const randomizedDeck = randomize(deck);
     setDeck(randomizedDeck);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleNumPlayersChange(event){
