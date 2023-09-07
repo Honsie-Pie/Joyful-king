@@ -3,7 +3,7 @@ import AnimatedMug from "./animatedmug";
 export default function PlayerResult(props){
     return(
         <div className="player-card">
-            <p>Player {props.player.index  + 1} {props.losingPlayers.includes(props.player)
+            <p><span className="bold">P{props.player.index  + 1}</span> {props.losingPlayers.includes(props.player)
             ? " grabs a drink!"
             : "is safe"}</p>
             {props.losingPlayers.includes(props.player)

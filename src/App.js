@@ -454,7 +454,6 @@ function App() {
       ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers} activePlayers={activePlayers}/>
       : <Finale handleEnd={handleEnd} activePlayers={activePlayers}/>
       }
-      <p>total: {deck.length}</p>
     </div>
   );
 }
