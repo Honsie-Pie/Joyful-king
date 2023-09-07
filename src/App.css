@@ -1,7 +1,11 @@
 
 :root{
-  --menu-bg: #F0877F;
+  --menu-bg: #9d4edd;
+  --app-bg: #f5f3a6;
+  --btn-color: #EFD2FF;
 
+  /*Fonts*/
+  --main-font: Luckiest Guy;
 
   /*Mug colors*/
   --bottom-color: #CEBF12;
@@ -15,9 +19,22 @@
   box-sizing: border-box;
 }
 
+html{
+  font-size: 16px;
+}
+
+body{
+  background-color: var(--app-bg);
+  height: 100vh;
+  overflow:hidden;
+}
+
 h1{
   text-align: center;
-  margin: 1em auto 2em;
+  margin: 40px auto;
+  font-size: 4rem;
+  font-family: var(--main-font), sans-serif;
+  letter-spacing: 4px;
 }
 
 button{
@@ -30,10 +47,26 @@ input{
 }
 
 .menu{
-  border: 2px solid black;
+  border: 10px solid black;
+  border-radius: 15px;
   margin: 0 auto;
   padding: 1em;
   background-color: var(--menu-bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 1em;
+  width: 90%;
+}
+
+.menu h2{
+  text-align: center;
+}
+
+.menu button{
+  max-width:30%;
+  background-color: var(--btn-color);
+  border-radius: 5px;
 }
 
 .player-card{
@@ -47,7 +80,26 @@ input{
   width: 20%;
 }
 
+.player-controls{
+  padding: 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.player-controls button{
+  font-size: 1rem;
+  text-align: center;
+  max-width: 50%;
+}
+
+.card{
+  height: 200px;
+}
+
 .player-dash{
+  width: 90%;
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -130,7 +182,7 @@ input{
   animation: frothii 2s linear infinite;
 }
 
-.mug-top>.drip{
+.mug-top > .drip{
   width:20%;
   height:70%;
   position:absolute;

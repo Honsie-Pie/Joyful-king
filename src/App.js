@@ -445,7 +445,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Sad King</h1>
+      <h1>Happy King</h1>
       {phase === "main-menu"
       ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart} />
       : phase === "drawing" 
@@ -454,7 +454,6 @@ function App() {
       ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers} activePlayers={activePlayers}/>
       : <Finale handleEnd={handleEnd} activePlayers={activePlayers}/>
       }
-      <p>{deck.map((card, index) => <span key={index}> {index}: {card.rank} of {card.suit}  ,</span>)}</p>
       <p>total: {deck.length}</p>
     </div>
   );
