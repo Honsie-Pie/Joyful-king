@@ -442,7 +442,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Happy King</h1>
+      <header>
+        <h1>Happy King</h1>
+      </header>
       {phase === "main-menu"
       ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart} />
       : phase === "drawing" 

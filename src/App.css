@@ -34,10 +34,14 @@ body{
   height: 100vh;
 }
 
+header{
+  padding: 2em 2em;
+  display: flex;
+}
+
 h1{
   text-align: center;
-  margin: 40px auto;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: var(--main-font), sans-serif;
   letter-spacing: 4px;
 }
