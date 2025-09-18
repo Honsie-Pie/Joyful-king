@@ -1,9 +1,10 @@
 
 :root{
-  --menu-bg: #8d3ecd;
-  --card-bg: #5a189a;
+  --menu-bg: #7d2ebd;
+  --card-bg: #591799;
   --app-bg: #ffd500;
   --btn-color: #EFD2FF;
+  --info-color: rgba(212, 210, 213, 0.7);
 
   /*Fonts*/
   --main-font: Luckiest Guy;
@@ -35,8 +36,16 @@ body{
 }
 
 header{
-  padding: 2em 2em;
+  padding: 1.5em;
   display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.info-btn{
+  font-style:bold;
+  height: 3em;
+  font-size: 1rem;
 }
 
 h1{
@@ -44,6 +53,38 @@ h1{
   font-size: 3rem;
   font-family: var(--main-font), sans-serif;
   letter-spacing: 4px;
+}
+
+.info-box{
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--info-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-box h2{
+  font-size: 2.5rem;
+}
+
+.info-box p{
+  width: 40%;
+  font-size: 1.5rem;
+}
+
+.info-box h2, .info-box p{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0.5em auto;
+  text-align:left;
+}
+
+.blurred{
+  filter: blur(4px);
 }
 
 button{

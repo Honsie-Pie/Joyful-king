@@ -3,6 +3,7 @@ import MainMenu from './mainemenu';
 import PlayerDash from './playerdash';
 import Results from './results';
 import Finale from './finale';
+import HowTo from './howto';
 import './App.css';
 
 function App() {
@@ -326,6 +327,7 @@ function App() {
   const [activePlayers, setActivePlayers] = useState([]);
   const [losingPlayers, setLosingPlayers] = useState([]);
   const [phase, setPhase] = useState("main-menu");
+  const [showInfo, setShowInfo] = useState(false);
 
   
   useEffect(()=>{
@@ -444,6 +446,7 @@ function App() {
     <div className="App">
       <header>
         <h1>Happy King</h1>
+        <button className="info-btn" onClick={() => setShowInfo(true)}><i className="fa-solid fa-info"></i></button>
       </header>
       {phase === "main-menu"
       ? <MainMenu numPlayers={numPlayers} handleNumPlayersChange={handleNumPlayersChange} handleStart={handleStart} />
@@ -453,6 +456,7 @@ function App() {
       ? <Results handleNewRound={handleNewRound} losingPlayers={losingPlayers} activePlayers={activePlayers}/>
       : <Finale handleEnd={handleEnd} activePlayers={activePlayers}/>
       }
+      {showInfo ? <HowTo setShowInfo={setShowInfo}/> : <div></div>}
     </div>
   );
 }
