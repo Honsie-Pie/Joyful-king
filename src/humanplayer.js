@@ -6,7 +6,7 @@ export default function HumanPlayer(props){
             {/*<h3>{props.card.rank} of {props.card.suit}</h3>*/}
             <div className="player-controls">
                 <button onClick={() => props.handleDraw(props.index)}>Draw</button>
-                <button onClick={props.handleResults}>Fold</button>
+                <button onClick={props.handleResults}>Show</button>
             </div>
         </div>
     );
